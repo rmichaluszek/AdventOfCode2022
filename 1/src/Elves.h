@@ -14,6 +14,7 @@ public:
 
 	void ParseData(std::vector<std::string> data);
 	int MostCaloriesCarriedByElf();
+	int MostCaloriesCarriedByTop3();
 
 };
 

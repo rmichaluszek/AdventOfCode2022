@@ -21,9 +21,9 @@ std::vector<std::string> DataLoader::GetData() {
 
         if(l.length()<= 0) {
         	numberOfEmptyLines++;
-        	data.push_back("");
     	}
         else {
+        	if(numberOfEmptyLines==1) data.push_back("");
             data.push_back(l);
             numberOfEmptyLines = 0;
         }

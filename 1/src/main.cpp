@@ -13,6 +13,7 @@ int main() {
     elves.ParseData(data);
 
     std::cout << "Biggest amount of calories: " << elves.MostCaloriesCarriedByElf() << std::endl;
+    std::cout << "Amount of calories held by top 3: " << elves.MostCaloriesCarriedByTop3() << std::endl;
 
     std::cout << std::endl;
     system("pause");
