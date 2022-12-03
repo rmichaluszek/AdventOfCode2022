@@ -12,26 +12,21 @@ std::vector<std::string> DataLoader::GetData() {
 
     std::vector<std::string> data;
 
-    int numberOfEmptyLines = 0;
-    bool inputEnabled = true;
-    while(inputEnabled) {
+    std::ifstream file;
+    file.open("./input.txt");
 
-        std::string l = "";
-        getline(std::cin,l);
+    if (!file) std::cout << "Input file not found" << std::endl;
 
-        if(l.length()<= 0) {
-        	numberOfEmptyLines++;
-    	}
-        else {
-        	if(numberOfEmptyLines==1) data.push_back("");
-            data.push_back(l);
-            numberOfEmptyLines = 0;
+    if (file.is_open()){
+
+    	std::string l = "";
+
+        while(getline(file, l)){
+        	data.push_back(l);
         }
-
-        if(numberOfEmptyLines>=2) {
-        	inputEnabled = false;
-        }
+        file.close();
 
     }
+
     return data;
 }

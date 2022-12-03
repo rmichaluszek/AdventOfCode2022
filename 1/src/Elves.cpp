@@ -52,8 +52,6 @@ int Elves::MostCaloriesCarriedByTop3()
 
 	for(size_t i=0; i<this->elves.size();i++) {
 		sumsOfCalories.push_back(this->elves[i].GetSumOfCalories());
-
-		std::cout << this->elves[i].GetSumOfCalories() << std::endl;
 	}
 
 	sort(sumsOfCalories.begin(),sumsOfCalories.end(),std::greater<int>());

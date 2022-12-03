@@ -1,6 +1,9 @@
 #ifndef DATALOADER_H
 #define DATALOADER_H
+
 #include <bits/stdc++.h>
+#include <fstream>
+#include <iostream>
 
 class DataLoader
 {
