@@ -1,7 +1,8 @@
 #ifndef ELF_H_
 #define ELF_H_
 
-#include <bits/stdc++.h>
+#include <vector>
+#include <string>
 
 class Elf {
 public:

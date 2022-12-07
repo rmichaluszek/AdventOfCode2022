@@ -1,9 +1,11 @@
 #ifndef ELVES_H_
 #define ELVES_H_
 
-#include "Elf.h"
+#include <vector>
+#include <string>
+#include <algorithm>
 
-#include <bits/stdc++.h>
+#include "Elf.h"
 
 class Elves {
 public:
