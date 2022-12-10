@@ -5,11 +5,12 @@ Tasks from Advent of Code's year 2022.
 by Rafał Michałuszek (rmichaluszek)
 
 ## Software
+
 IDE: CLion 2022.3
-
-Compiler: g++ (MinGW.org GCC-6.3.0-1) 6.3.0 
-
+CMake: Version 3.24.2
+Compiler: MinGW w64 9.0 (g++)
 Lang: C++ 17
+
 ## Running
 
 Clone the project or download it from dropdown above.
