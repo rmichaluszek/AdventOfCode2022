@@ -1,8 +1,0 @@
-# ninja log v5
-1	1286	6918954250686181	CMakeFiles/3.dir/src/main.cpp.obj	fbca6756933eee92
-8	1767	6918954908968885	CMakeFiles/3.dir/src/main.cpp.obj	fbca6756933eee92
-1	1211	6918955788270974	CMakeFiles/3.dir/src/main.cpp.obj	fbca6756933eee92
-1	1201	6918956001680426	CMakeFiles/3.dir/src/main.cpp.obj	fbca6756933eee92
-11	3024	6918956495245316	CMakeFiles/3.dir/src/main.cpp.obj	fbca6756933eee92
-1	3043	6918956495315271	CMakeFiles/3.dir/src/DataLoader.cpp.obj	65ec36c51843a672
-3043	4400	6918956508738243	3.exe	9df10769dc53de3c

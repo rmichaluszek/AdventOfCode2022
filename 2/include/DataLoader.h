@@ -1,16 +1,17 @@
 #ifndef DATALOADER_H
 #define DATALOADER_H
-#include <vector>
-#include <string>
-#include <iostream>
 
+#include <string>
+#include <vector>
+#include <fstream>
+#include <iostream>
 
 class DataLoader
 {
 public:
     DataLoader();
     virtual ~DataLoader();
-    std::vector<std::string> GetData();
+    static std::vector<std::string> GetData();
 
 protected:
 
