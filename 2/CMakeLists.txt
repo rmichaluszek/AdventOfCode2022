@@ -11,6 +11,6 @@ include_directories(
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_executable(2 src/main.cpp include/DataLoader.h src/DataLoader.cpp)
+add_executable(2 src/main.cpp include/DataLoader.h src/DataLoader.cpp include/RockPaperScissors.h src/RockPaperScissors.cpp)
 
 file(COPY data DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
