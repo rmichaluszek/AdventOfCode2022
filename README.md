@@ -7,8 +7,11 @@ by Rafał Michałuszek (rmichaluszek)
 ## Software
 
 IDE: CLion 2022.3
+
 CMake: Version 3.24.2
+
 Compiler: MinGW w64 9.0 (g++)
+
 Lang: C++ 17
 
 ## Running
