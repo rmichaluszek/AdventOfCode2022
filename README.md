@@ -5,13 +5,12 @@ Tasks from Advent of Code's year 2022.
 by Rafał Michałuszek (rmichaluszek)
 
 ## Software
-IDE: Eclipse C/C++ 2022-09 (4.25.0)
+IDE: CLion 2022.3
 
 Compiler: g++ (MinGW.org GCC-6.3.0-1) 6.3.0 
 
-Lang: C++ 14
+Lang: C++ 17
 ## Running
 
 Clone the project or download it from dropdown above.
-
-Open any project folder with your preferred editor, or just go into `/bin/Release` and run the compiled windows executable (.exe).    
+Import in your IDE and build debug or release, the project is made in CMake  
