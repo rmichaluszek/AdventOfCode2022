@@ -18,7 +18,8 @@ public:
     std::vector<std::pair<short ,short>> Rounds;
 
     void ParseData(std::vector<std::string> data);
-    int CalculateResult();
+    int CalculateFirstPartResult();
+    int CalculateSecondPartResult();
 
 protected:
 

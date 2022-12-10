@@ -12,9 +12,11 @@ int main() {
     RockPaperScissors rps;
     rps.ParseData(data);
 
-    int myEstaminatedScore = rps.CalculateResult();
+    int firstPartResult = rps.CalculateFirstPartResult();
+    int secondPartResult  = rps.CalculateSecondPartResult();
 
-    std::cout << "First part of the puzzle result is: " << myEstaminatedScore << std::endl;
+    std::cout << "First part of the puzzle result is: " << firstPartResult << std::endl;
+    std::cout << "Second part of the puzzle result is: " << secondPartResult << std::endl;
     system("pause");
     // waits for any key to close the program, just to see results
 
