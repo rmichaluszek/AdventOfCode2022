@@ -10,6 +10,7 @@ public:
 
     void ParseData(std::vector<std::string> data);
     int CalculatePart1();
+    int CalculatePart2();
 };
 
 #endif //INC_3_BACKPACKS_H

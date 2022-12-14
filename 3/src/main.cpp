@@ -13,6 +13,7 @@ int main() {
     backpacks.ParseData(data);
 
     std::cout << "Part 1 result is: " << backpacks.CalculatePart1() << std::endl;
+    std::cout << "Part 2 result is: " << backpacks.CalculatePart2() << std::endl;
 
     system("pause");
     // waits for any key to close the program, just to see results
