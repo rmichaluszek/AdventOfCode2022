@@ -39,11 +39,28 @@ int Pairs::SolvePart1() {
 }
 
 int Pairs::SolvePart2() {
-    return 0;
+    int result = 0;
+
+    for(size_t i=0;i<this->sections.size();i++) {
+        std::pair<std::pair<int,int>,std::pair<int,int>> data = this->sections[i];
+        if(DoOverlap(data.first.first,data.first.second,data.second.first,data.second.second)) {
+            result++;
+        }
+    }
+
+    return result;
 }
 
 bool Pairs::IsFullyContained(int a, int b, int c, int d) {
     if(a >= c && b <= d) return true;
     else if(c >= a && d <= b) return true;
+    return false;
+}
+
+bool Pairs::DoOverlap(int a, int b, int c, int d) {
+    if(a >= c && a <= d) return true;
+    else if(b <= d && b >= c) return true;
+    else if(c >= a && c <= b) return true;
+    else if(d <= b && d >= a) return true;
     return false;
 }

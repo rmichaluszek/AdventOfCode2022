@@ -18,7 +18,7 @@ public:
 
 private:
     bool IsFullyContained(int a,int b,int c,int d);
-
+    bool DoOverlap(int a,int b,int c,int d);
 };
 
 #endif //PAIRS_H
