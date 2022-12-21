@@ -29,10 +29,47 @@ void Stacks::ParseData(std::vector <std::string> data) {
             }
         }
     }
-    std::cout << this->stacks[0].size() << std::endl;
 
     // Parse commands
     for(size_t i=commandsStartingLine;i<data.size();i++) {
+        std::stringstream stream(data[i]);
+        std::string token;
+        std::vector<int> tokens;
 
+        int j=0;
+
+        while( getline(stream,token,' ')) {
+            if(token != "move" && token != "from" && token != "to") {
+                tokens.push_back(stoi(token));
+                j++;
+            }
+        }
+        this->commands.push_back(tokens);
     }
+}
+
+std::string Stacks::SolvePart1() {
+    std::string result = "";
+
+    for(size_t c=0; c<this->commands.size();c++) {
+        int howMany = this->commands[c][0];
+        int whereFrom = this->commands[c][1]-1;
+        int whereTo = this->commands[c][2]-1;
+
+        for(int i=0;i<howMany;i++) {
+            char crate = this->stacks[whereFrom].top();
+            this->stacks[whereTo].push(crate);
+            this->stacks[whereFrom].pop();
+        }
+    }
+
+    for(size_t i=0;i<this->stacks.size();i++) {
+        result += this->stacks[i].top();
+    }
+
+    return result;
+}
+
+std::string Stacks::SolvePart2() {
+    return "";
 }

@@ -12,7 +12,7 @@ int main() {
     Stacks stacks;
     stacks.ParseData(data);
 
-    std::cout << "First part result is: "  << std::endl;
+    std::cout << "First part result is: " << stacks.SolvePart1() << std::endl;
     std::cout << "Second part result is: " << std::endl;
 
     system("pause");
