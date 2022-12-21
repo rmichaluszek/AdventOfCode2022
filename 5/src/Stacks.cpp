@@ -51,25 +51,53 @@ void Stacks::ParseData(std::vector <std::string> data) {
 std::string Stacks::SolvePart1() {
     std::string result = "";
 
+    std::vector<std::stack<char>> stacks = this->stacks;
+
     for(size_t c=0; c<this->commands.size();c++) {
         int howMany = this->commands[c][0];
         int whereFrom = this->commands[c][1]-1;
         int whereTo = this->commands[c][2]-1;
 
         for(int i=0;i<howMany;i++) {
-            char crate = this->stacks[whereFrom].top();
-            this->stacks[whereTo].push(crate);
-            this->stacks[whereFrom].pop();
+            char crate = stacks[whereFrom].top();
+            stacks[whereTo].push(crate);
+            stacks[whereFrom].pop();
         }
     }
 
-    for(size_t i=0;i<this->stacks.size();i++) {
-        result += this->stacks[i].top();
+    for(size_t i=0;i<stacks.size();i++) {
+        result += stacks[i].top();
     }
 
     return result;
 }
 
 std::string Stacks::SolvePart2() {
-    return "";
+    std::string result = "";
+
+    std::vector<std::stack<char>> stacks = this->stacks;
+
+    for(size_t c=0; c<this->commands.size();c++) {
+        int howMany = this->commands[c][0];
+        int whereFrom = this->commands[c][1]-1;
+        int whereTo = this->commands[c][2]-1;
+
+        std::vector<char> cratesToMove;
+
+        for(int i=0;i<howMany;i++) {
+            char crate = stacks[whereFrom].top();
+            cratesToMove.push_back(crate);
+            stacks[whereFrom].pop();
+        }
+
+        for(int i=0;i<cratesToMove.size();i++) {
+            stacks[whereTo].push(cratesToMove[cratesToMove.size()-1-i]);
+        }
+    }
+
+    for(size_t i=0;i<stacks.size();i++) {
+        result += stacks[i].top();
+    }
+
+    return result;
 }

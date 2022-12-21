@@ -13,7 +13,7 @@ int main() {
     stacks.ParseData(data);
 
     std::cout << "First part result is: " << stacks.SolvePart1() << std::endl;
-    std::cout << "Second part result is: " << std::endl;
+    std::cout << "Second part result is: " << stacks.SolvePart2()  << std::endl;
 
     system("pause");
     // waits for any key to close the program, just to see results
