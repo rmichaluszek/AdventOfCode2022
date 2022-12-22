@@ -27,5 +27,22 @@ int PuzzleSolver::SolvePart1() {
 }
 
 int PuzzleSolver::SolvePart2() {
-    return 0;
+    int result = 0;
+
+    std::string string = this->dataStreamString;
+    std::string usedCharacters = "";
+    for(int i=0;i<string.length();i++) {
+        if(usedCharacters.find(string[i])==std::string::npos){
+            usedCharacters+=string[i];
+        } else { // Something has repeated
+            usedCharacters=string[i]; // Reset the unique characters list
+        }
+        result++;
+
+        if(usedCharacters.length()>=14) {
+            break;
+        }
+    }
+
+    return result;
 }
