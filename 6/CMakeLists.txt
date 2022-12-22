@@ -15,4 +15,4 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 file(COPY data DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
-add_executable(6 src/main.cpp src/DataLoader.cpp include/DataLoader.h)
+add_executable(6 src/main.cpp src/DataLoader.cpp include/DataLoader.h include/PuzzleSolver.h src/PuzzleSolver.cpp)
