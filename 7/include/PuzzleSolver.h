@@ -12,10 +12,19 @@ public:
     std::vector<Folder> folders; // folders, containing files and folders
 
     int getDataSize() {
-        return 0;
+        int size = 0;
+        // files in this folder
+        for(size_t i=0; i<this->files.size();i++) {
+            size += this->files[i].second; // the size of file
+        }
+        // and size of folders that are within this one
+        for(size_t i=0; i<this->folders.size();i++) {
+            size += this->folders[i].getDataSize(); // the size of file
+        }
+        return size;
     }
 
-    void addFile(std::string name, int size,std::vector<std::string> pathToCurrentFolder) {
+    void addFile(std::string name, int size) {
         std::pair<std::string, int> newFile(name,size);
         this->files.push_back(newFile);;
     }
@@ -24,7 +33,6 @@ public:
         for (size_t i = 0; i < this->folders.size(); i++) {
             if (name == this->folders[i].folderName) {
                 folderDoesExist = true;
-                std::cout << "Folder exists: " << name << std::endl;
             }
         }
 
@@ -32,9 +40,17 @@ public:
             Folder newFolder;
             newFolder.folderName = name;
             this->folders.push_back(newFolder);
-
-            std::cout << "Created folder: " << name << " in folder " << this->folderName << std::endl;
         }
+    }
+
+    std::vector<Folder*> getFoldersList() {
+        std::vector<Folder*> list;
+        for(size_t i=0; i<this->folders.size();i++) {
+            std::vector<Folder*> thisFoldersList = this->folders[i].getFoldersList();
+            std::copy(std::begin(thisFoldersList), std::end(thisFoldersList), std::back_inserter(list));
+            list.push_back(&this->folders[i]);
+        }
+        return list;
     }
 
     Folder* getFolder(std::string name) {

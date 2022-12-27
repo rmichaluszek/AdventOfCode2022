@@ -21,7 +21,11 @@ void PuzzleSolver::ParseData(std::vector <std::string> data) {
             if(command=="cd" && argument=="/") {
                 currentFolder.clear();
             } else if (command=="cd") {
-                currentFolder.push_back(argument);
+                if(argument!="..") {
+                    currentFolder.push_back(argument);
+                } else {
+                    currentFolder.pop_back();
+                }
             } else if (command == "ls") {
                 listing = true;
             }
@@ -34,7 +38,6 @@ void PuzzleSolver::ParseData(std::vector <std::string> data) {
             std::vector<std::string> pathToFolder = currentFolder;
 
             if(firstPart=="dir") {
-                std::cout << "dir " << secondPart << " // size:" << currentFolder.size() << std::endl;
                 Folder *parentFolder = &this->fileSystem;
                 while(pathToFolder.size()>0){
                     parentFolder=parentFolder->getFolder(pathToFolder[0]);
@@ -42,14 +45,32 @@ void PuzzleSolver::ParseData(std::vector <std::string> data) {
                 }
                 parentFolder->addFolder(secondPart);
             } else {
-                this->fileSystem.addFile(secondPart,stoi(firstPart),currentFolder);
+                Folder *parentFolder = &this->fileSystem;
+                while(pathToFolder.size()>0){
+                    parentFolder=parentFolder->getFolder(pathToFolder[0]);
+                    pathToFolder.erase(pathToFolder.begin());
+                }
+                parentFolder->addFile(secondPart,stoi(firstPart));
             }
         }
     }
 }
 
 int PuzzleSolver::SolvePart1() {
-    return 0;
+    int result = 0;
+    int folderSizeLimit = 100000;
+
+    std::vector<Folder*> folders = this->fileSystem.getFoldersList();
+
+    for(size_t i=0;i<folders.size();i++) {
+        int size = folders[i]->getDataSize();
+
+        if(size<folderSizeLimit) {
+            result += size;
+        }
+    }
+
+    return result;
 }
 
 int PuzzleSolver::SolvePart2() {

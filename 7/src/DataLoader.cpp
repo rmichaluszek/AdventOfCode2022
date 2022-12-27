@@ -10,8 +10,8 @@ std::vector<std::string> DataLoader::GetData() {
 
     std::ifstream file;
 
-    //file.open("data/input.txt");
-    file.open("data/example_input.txt");
+    file.open("data/input.txt");
+    //file.open("data/example_input.txt");
 
     if (!file) std::cout << "Input file not found" << std::endl;
 
