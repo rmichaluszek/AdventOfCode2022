@@ -74,5 +74,29 @@ int PuzzleSolver::SolvePart1() {
 }
 
 int PuzzleSolver::SolvePart2() {
-    return 0;
+    int spaceNeededByUpdate = 30000000;
+    int discSize = 70000000;
+
+    // get the size of all the folders
+    int currentlyUsedSpace = this->fileSystem.getDataSize();
+    int unusedSpace = discSize-currentlyUsedSpace;
+
+    int spaceLeftRequiredByUpdate = spaceNeededByUpdate-unusedSpace;
+
+    int deletionCandidateSize = currentlyUsedSpace; // the "/" directory
+
+    // and search for folder that is th lowest, and higher than space left needed for update
+    std::vector<Folder*> folders = this->fileSystem.getFoldersList();
+
+    for(size_t i=0;i<folders.size();i++) {
+        int size = folders[i]->getDataSize();
+
+        if(size>spaceLeftRequiredByUpdate) {
+            if(size < deletionCandidateSize) {
+                deletionCandidateSize = size;
+            }
+        }
+    }
+
+    return deletionCandidateSize;
 }
