@@ -37,34 +37,28 @@ bool PuzzleSolver::IsTreeVisible(short x, short y) {
     // Check all 4 directions for trees that are as high or higher, if none is found the the tree is visible
     bool isVisible[4] = {true,true,true,true}; // 4 sides
 
-    if(x==0 || x == this->trees[y].size()-1) {
-        return true;
-    } else if(y==0 || y == this->trees.size()-1) {
-        return true;
-    }
-
     // Left
-    for(size_t i=1;i<x;i++) {
-        if (this->trees[y][x-i] >= this->trees[y][x]) {
+    for(size_t i=0;i<x;i++) {
+        if (this->trees[y][i] >= this->trees[y][x]) {
             isVisible[0] = false;
         }
     }
-    // Left
-    for(size_t i=1;i<this->trees[y].size()-x;i++) {
-        if (this->trees[y][x+i] >= this->trees[y][x]) {
+    // right
+    for(size_t i=x+1;i<this->trees[y].size();i++) {
+        if (this->trees[y][i] >= this->trees[y][x]) {
             isVisible[1] = false;
         }
     }
 
     // Left
-    for(size_t i=1;i<y;i++) {
-        if (this->trees[y-i][x] >= this->trees[y][x]) {
+    for(size_t i=0;i<y;i++) {
+        if (this->trees[i][x] >= this->trees[y][x]) {
             isVisible[2] = false;
         }
     }
     // Left
-    for(size_t i=1;i<this->trees.size()-y;i++) {
-        if (this->trees[y+i][x] >= this->trees[y][x]) {
+    for(size_t i=y+1;i<this->trees.size();i++) {
+        if (this->trees[i][x] >= this->trees[y][x]) {
             isVisible[3] = false;
         }
     }
