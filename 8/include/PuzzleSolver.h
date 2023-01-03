@@ -9,6 +9,7 @@ class PuzzleSolver {
 public:
     std::vector<std::vector<short>> trees;
     bool IsTreeVisible(short x, short y);
+    int GetScenicScore(short x, short y);
 
     void ParseData(std::vector<std::string> data);
     int SolvePart1();

@@ -22,14 +22,22 @@ int PuzzleSolver::SolvePart1() {
         }
     }
 
-    // And add the trees that are on the edges
-    int numberOfTreesOnThEdges = this->trees.size()*2+this->trees[0].size()*2-4;
-    //result += numberOfTreesOnThEdges;
     return result;
 }
 
 int PuzzleSolver::SolvePart2() {
-    return 0;
+
+    int biggestScenicScore = 0;
+    // Count visible trees
+    // We skip the ones on the edge (y=1)
+    for(size_t y=0;y<this->trees.size();y++) {
+        for (size_t x=0;x<this->trees[y].size();x++) {
+            int scenicScore = GetScenicScore(x,y);
+            if(scenicScore>biggestScenicScore) biggestScenicScore = scenicScore;
+        }
+    }
+
+    return biggestScenicScore;
 }
 
 bool PuzzleSolver::IsTreeVisible(short x, short y) {
@@ -43,20 +51,20 @@ bool PuzzleSolver::IsTreeVisible(short x, short y) {
             isVisible[0] = false;
         }
     }
-    // right
+    // Right
     for(size_t i=x+1;i<this->trees[y].size();i++) {
         if (this->trees[y][i] >= this->trees[y][x]) {
             isVisible[1] = false;
         }
     }
 
-    // Left
+    // Top
     for(size_t i=0;i<y;i++) {
         if (this->trees[i][x] >= this->trees[y][x]) {
             isVisible[2] = false;
         }
     }
-    // Left
+    // Bottom
     for(size_t i=y+1;i<this->trees.size();i++) {
         if (this->trees[i][x] >= this->trees[y][x]) {
             isVisible[3] = false;
@@ -69,4 +77,52 @@ bool PuzzleSolver::IsTreeVisible(short x, short y) {
         }
     }
     return false;
+}
+
+int PuzzleSolver::GetScenicScore(short x, short y) {
+    int score = 0;
+
+    int treesVisible[4] = {0,0,0,0}; // how many trees are visible in each direction
+
+    // Now we iterate in the direction that were counting
+
+    // Left
+    for(int i=x-1;i>=0;i--) {
+        treesVisible[0]++;
+        if (this->trees[y][i] >= this->trees[y][x]) {
+            // we stop now
+            break;
+        }
+    }
+
+    // Right
+    for(int i=x+1;i<this->trees[y].size();i++) {
+        treesVisible[1]++;
+        if (this->trees[y][i] >= this->trees[y][x]) {
+            // we stop now
+            break;
+        }
+    }
+
+    // Top
+    for(int i=y-1;i>=0;i--) {
+        treesVisible[2]++;
+        if (this->trees[i][x] >= this->trees[y][x]) {
+            // we stop now
+            break;
+        }
+    }
+
+    // Bottom
+    for(int i=y+1;i<this->trees.size();i++) {
+        treesVisible[3]++;
+        if (this->trees[i][x] >= this->trees[y][x]) {
+            // we stop now
+            break;
+        }
+    }
+
+    score = treesVisible[0] * treesVisible[1] * treesVisible[2] * treesVisible[3];
+
+    return score;
 };
